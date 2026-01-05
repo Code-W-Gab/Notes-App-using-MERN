@@ -18,7 +18,8 @@ export default function LoginForm() {
     // Auth Services
     Login(email, password)
       .then(res => {
-        console.log(res)
+        // Save token
+        localStorage.setItem("token", res.data.token);
         setEmail("")
         setPassword("")
         toast.success("Successfully Login!")

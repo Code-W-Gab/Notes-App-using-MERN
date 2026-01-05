@@ -6,6 +6,7 @@ import SignInPage from "./pages/SignInPage";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom"
 import { getNotes } from "./services/noteService";
+import PrivateRoute from "./components/routes/PrivateRoute";
 
 
 function App() {
@@ -25,9 +26,21 @@ function App() {
   return (
     <>
     <Routes>
-      <Route path="/home" element={<HomePage notes={notes} fetchNotes={fetchNotes}/>}/>
-      <Route path="/create" element={<CreatePage fetchNotes={fetchNotes}/>}/>
-      <Route path="/edit/:id" element={<NoteDetailPage fetchNotes={fetchNotes}/>}/>
+      <Route path="/home" element={
+        <PrivateRoute>
+          <HomePage notes={notes} fetchNotes={fetchNotes}/>
+        </PrivateRoute>
+      }/>
+      <Route path="/create" element={
+        <PrivateRoute>
+          <CreatePage fetchNotes={fetchNotes}/>
+        </PrivateRoute>
+      }/>
+      <Route path="/edit/:id" element={
+        <PrivateRoute>
+          <NoteDetailPage fetchNotes={fetchNotes}/>
+        </PrivateRoute>
+      }/>
       <Route path="/register" element={<SignUpPage/>}/>
       <Route path="/" element={<SignInPage/>}/>
     </Routes>
