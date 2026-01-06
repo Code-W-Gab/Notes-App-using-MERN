@@ -23,7 +23,8 @@ export default function LoginForm() {
         setEmail("")
         setPassword("")
         toast.success("Successfully Login!")
-        navigate('/home')
+        if (res.data.role !== "admin") return navigate('/home')
+        navigate('/create')
       })
   }
 
