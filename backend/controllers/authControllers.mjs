@@ -46,15 +46,6 @@ const authController = {
       next(error)
     }
   },
-  
-  async User (req, res, next){
-    try {
-      const user = await userSchema.find().select("-password");
-      res.json(user)
-    } catch (error) {
-      next(error)
-    }
-  },
 }
 
 export default authController

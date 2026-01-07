@@ -5,7 +5,7 @@ const noteController = {
   async CreateNote (req, res, next){
     try {
       const { note, content } = req.body
-      const newNote = await noteSchema.create({ note, content })
+      const newNote = await noteSchema.create({ note, content, user: req.user.id })
       res.status(201).json(newNote)
     } catch (error) {
       next(error)
@@ -14,7 +14,7 @@ const noteController = {
   // Get Note
   async GetNote (req, res, next){
     try {
-      const note = await noteSchema.find()
+      const note = await noteSchema.find({ user: req.user.id })
       res.status(200).json(note)
     } catch (error) {
       next(error)
@@ -23,7 +23,10 @@ const noteController = {
   // Delete Note
   async DeleteNote (req, res, next){
     try {
-      const deletedNote = await noteSchema.findByIdAndDelete(req.params.id)
+      const deletedNote = await noteSchema.findByIdAndDelete({ 
+        _id: req.params.id,
+        user: req.user.id  // Ensure user owns the note
+      })
       if (!deletedNote) return res.status(404).json({ message: "Note not found" });
       res.json({ message: "Note deleted successfully" });
     } catch (error) {
@@ -33,7 +36,10 @@ const noteController = {
   // Get Note By Id
   async GetNoteById (req, res, next){
     try {
-      const note = await noteSchema.findById(req.params.id)
+      const note = await noteSchema.findOne({ 
+        _id: req.params.id,
+        user: req.user.id  // Ensure user owns the note
+      })
       if (!note) return res.status(404).json({ message: "Note not found!"})
       res.status(200).json(note)
     } catch (error) {
@@ -46,7 +52,7 @@ const noteController = {
       const { id } = req.params;
       const { note, content } = req.body
       const updatedNote = await noteSchema.findByIdAndUpdate(
-        id,
+        { _id: id, user: req.user.id },
         { note, content },
         { new: true }
       );

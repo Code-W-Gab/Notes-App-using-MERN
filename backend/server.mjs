@@ -5,6 +5,7 @@ import cors from 'cors'
 import connectDB from './config/db.mjs'
 import noteRoutes from './routes/noteRoutes.mjs'
 import userRoutes from './routes/userRoutes.mjs'
+import adminRoutes from './routes/adminRoutes.mjs'
 
 const app = express()
 app.use(express.json())
@@ -16,6 +17,7 @@ connectDB()
 // Routes
 app.use('/notes', noteRoutes)
 app.use('/auth', userRoutes)
+app.use('/admin', adminRoutes)
 
 // Global Error Handler
 app.use((err, req, res, next) => {

@@ -1,9 +1,9 @@
 import LoginForm from "../components/auth/LoginForm";
 
-export default function SignInPage() {
+export default function SignInPage({fetchNotes}) {
   return(
     <>
-      <LoginForm/>
+      <LoginForm fetchNotes={fetchNotes}/>
     </>
   )
 }

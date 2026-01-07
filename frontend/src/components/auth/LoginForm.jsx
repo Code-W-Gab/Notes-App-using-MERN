@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { Login } from "../../services/authService"
 import toast from "react-hot-toast"
 
-export default function LoginForm() {
+export default function LoginForm({fetchNotes}) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
@@ -22,9 +22,10 @@ export default function LoginForm() {
         localStorage.setItem("token", res.data.token);
         setEmail("")
         setPassword("")
+        fetchNotes()
         toast.success("Successfully Login!")
         if (res.data.role !== "admin") return navigate('/home')
-        navigate('/create')
+        navigate('/admin')
       })
   }
 
