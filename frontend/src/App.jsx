@@ -1,14 +1,20 @@
-import HomePage from "./pages/HomePage"
-import CreatePage from "./pages/CreatePage"
-import NoteDetailPage from "./pages/NoteDetailPage";
-import SignUpPage from "./pages/SignUpPage";
-import SignInPage from "./pages/SignInPage";
-import AdminPage from "./pages/AdminPage";
-import AdminDetailPage from "./pages/AdminDetailPage";
+// User Page
+import HomePage from "./pages/user/HomePage"
+import CreatePage from "./pages/user/CreatePage"
+import NoteDetailPage from "./pages/user/NoteDetailPage";
+// Auth Page
+import SignUpPage from "./pages/auth/SignUpPage";
+import SignInPage from "./pages/auth/SignInPage";
+import AuthCallbackPage from "./pages/auth/AuthCallbackPage";
+// Admin Page
+import AdminPage from "./pages/admin/AdminPage";
+import AdminDetailPage from "./pages/admin/AdminDetailPage";
+import AdminNotePage from "./pages/admin/AdminNotePage";
+// Common Import
+import PrivateRoute from "./components/common/PrivateRoute";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom"
 import { getNotes } from "./services/noteService";
-import PrivateRoute from "./components/routes/PrivateRoute";
 import { User } from "./services/adminService" 
 
 
@@ -39,30 +45,36 @@ function App() {
     <>
     <Routes>
       <Route path="/home" element={
-        <PrivateRoute>
+        <PrivateRoute role="user">
           <HomePage notes={notes} fetchNotes={fetchNotes}/>
         </PrivateRoute>
       }/>
       <Route path="/create" element={
-        <PrivateRoute>
+        <PrivateRoute role="user">
           <CreatePage fetchNotes={fetchNotes}/>
         </PrivateRoute>
       }/>
       <Route path="/edit/:id" element={
-        <PrivateRoute>
+        <PrivateRoute role="user">
           <NoteDetailPage fetchNotes={fetchNotes}/>
         </PrivateRoute>
       }/>
       <Route path="/admin" element={
-        <PrivateRoute>
+        <PrivateRoute role="admin">
           <AdminPage user={user} fetchUser={fetchUser}/>
         </PrivateRoute>
       }/>
       <Route path="/user/edit/:id" element={
-        <PrivateRoute>
+        <PrivateRoute role="admin">
           <AdminDetailPage fetchUser={fetchUser}/>
         </PrivateRoute>
       }/>
+      <Route path="/notes/:id" element={
+        <PrivateRoute role="admin">
+          <AdminNotePage/>
+        </PrivateRoute>
+      }/>
+      <Route path="/auth/callback" element={<AuthCallbackPage fetchNotes={fetchNotes} />} />
       <Route path="/register" element={<SignUpPage/>}/>
       <Route path="/" element={<SignInPage fetchNotes={fetchNotes}/>}/>
     </Routes>

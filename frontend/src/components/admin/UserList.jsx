@@ -1,5 +1,5 @@
 import { DeleteUser, User } from "../../services/adminService"
-import { Trash, Pencil } from "lucide-react"
+import { Trash, Pencil, NotebookPen } from "lucide-react"
 import { Link } from "react-router-dom"
 import toast from "react-hot-toast"
 import { useEffect } from "react";
@@ -40,6 +40,9 @@ export default function UserList({ user, fetchUser}) {
                 <Trash onClick={() => handleDelete(User._id)} size={18} className="text-red-600"/>
                 <Link to={`/user/edit/${User._id}`}>
                   <Pencil size={18} className="text-green-600"/>
+                </Link>
+                <Link to={`/notes/${User._id}`}>
+                  <NotebookPen size={18} className="text-blue-600"/>
                 </Link>
               </div>
             </div>

@@ -1,4 +1,4 @@
-import Form from "../components/notes/Form"
+import Form from "../../components/notes/Form"
 
 export default function CreatePage({ fetchNotes }) {
   return(

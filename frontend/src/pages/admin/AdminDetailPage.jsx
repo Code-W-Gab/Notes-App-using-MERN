@@ -1,4 +1,4 @@
-import UserEditForm from "../components/admin/UserEditForm";
+import UserEditForm from '../../components/admin/UserEditForm'
 
 export default function AdminDetailPage({fetchUser}) {
   return(

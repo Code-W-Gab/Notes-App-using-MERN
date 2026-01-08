@@ -2,6 +2,8 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { Login } from "../../services/authService"
 import toast from "react-hot-toast"
+import GoogleBtn from "./GoogleBtn"
+import ForgotPass from "./ForgotPass"
 
 export default function LoginForm({fetchNotes}) {
   const [email, setEmail] = useState("")
@@ -56,6 +58,8 @@ export default function LoginForm({fetchNotes}) {
           />
         </div>
         <button className="bg-blue-600 text-white py-1.5 w-full rounded-md hover:bg-blue-500" onClick={handleLogin}>Sign In</button>
+        <ForgotPass/>
+        <GoogleBtn/>
         <div className="flex gap-2 justify-center mt-2 text-sm">
           <p>Don't have an account?</p>
           <Link to={'/register'}>

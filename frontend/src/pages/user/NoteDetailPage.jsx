@@ -1,4 +1,4 @@
-import EditForm from "../components/notes/EditForm";
+import EditForm from "../../components/notes/EditForm";
 
 export default function NoteDetailPage({ fetchNotes }) {
   return(
