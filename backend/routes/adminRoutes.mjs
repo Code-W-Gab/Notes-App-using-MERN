@@ -12,5 +12,7 @@ router.delete('/delete/:id', auth, adminController.DeleteUser)
 router.get('/get/:id', auth, isAdmin, adminController.GetUserById)
 // Update a user
 router.put('/update/:id', auth, isAdmin, adminController.UpdateUser)
+// Get Note By User Id
+router.get('/notes/:id', auth, isAdmin, adminController.GetNoteById)
 
 export default router

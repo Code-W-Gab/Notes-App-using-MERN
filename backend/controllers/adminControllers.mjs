@@ -50,6 +50,18 @@ const adminController = {
     } catch (error) {
       next(error)
     }
+  }, 
+  // Get Notes by Id
+  async GetNoteById (req, res, next){
+    try {
+      const notes = await noteSchema.find({ 
+        user: req.params.id  // Find all notes where user field matches the userId
+      })
+      if (!notes) return res.status(404).json({ message: "Note not found!"})
+      res.status(200).json(notes)
+    } catch (error) {
+      next(error)
+    }
   }
 }
 
