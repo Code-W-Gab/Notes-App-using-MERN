@@ -4,12 +4,17 @@ import express from 'express'
 import cors from 'cors'
 import connectDB from './config/db.mjs'
 import noteRoutes from './routes/noteRoutes.mjs'
-import userRoutes from './routes/userRoutes.mjs'
 import adminRoutes from './routes/adminRoutes.mjs'
+import userRoutes from './routes/userRoutes.mjs'
 
 const app = express()
 app.use(express.json())
 app.use(cors()) 
+
+// Import and initialize passport AFTER dotenv and app creation
+const { default: passport } = await import('./config/passport.mjs')
+app.use(passport.initialize());
+app.locals.passport = passport; // Make passport available to routes
 
 // MongoDb
 connectDB()

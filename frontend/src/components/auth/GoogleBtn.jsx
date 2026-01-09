@@ -9,7 +9,7 @@ export default function GoogleBtn() {
   return(
     <button 
       onClick={handleGoogleLogin}
-      className='flex gap-2 items-center justify-center border mt-3 py-1 rounded-md'
+      className='flex gap-2 items-center justify-center border mt-3 py-1 rounded-md w-full'
     >
       <img src={google} alt="google" className='w-5'/>
       <span className='text-md'>Connect with Google</span>

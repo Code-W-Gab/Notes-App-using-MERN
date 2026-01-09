@@ -4,6 +4,7 @@ import { Login } from "../../services/authService"
 import toast from "react-hot-toast"
 import GoogleBtn from "./GoogleBtn"
 import ForgotPass from "./ForgotPass"
+import Divider from "./Divider"
 
 export default function LoginForm({fetchNotes}) {
   const [email, setEmail] = useState("")
@@ -59,6 +60,7 @@ export default function LoginForm({fetchNotes}) {
         </div>
         <button className="bg-blue-600 text-white py-1.5 w-full rounded-md hover:bg-blue-500" onClick={handleLogin}>Sign In</button>
         <ForgotPass/>
+        <Divider/>
         <GoogleBtn/>
         <div className="flex gap-2 justify-center mt-2 text-sm">
           <p>Don't have an account?</p>
