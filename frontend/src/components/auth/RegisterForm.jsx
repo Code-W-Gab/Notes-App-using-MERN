@@ -17,6 +17,10 @@ export default function RegisterForm() {
       toast.error("Email and Password cannot be empty.")
       return  
     }
+    
+    // Error Handling
+    if (!email.includes("@") || !email.includes(".com")) return toast.error("Please enter a valid email address.")
+    if (password.length < 8) return toast.error("Password must contain at least 8 char")
 
     Register(email, password)
       .then(res => {
@@ -25,6 +29,9 @@ export default function RegisterForm() {
         setPassword("")
         toast.success("Successfully Created!")
         navigate('/')
+      })
+      .catch(err => {
+        if (err.response?.status === 400) return toast.error("Email already exists. Please use a different email.")
       })
   }
 

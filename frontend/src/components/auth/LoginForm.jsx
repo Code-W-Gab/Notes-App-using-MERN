@@ -6,7 +6,7 @@ import GoogleBtn from "./GoogleBtn"
 import ForgotPass from "./ForgotPass"
 import Divider from "./Divider"
 
-export default function LoginForm({fetchNotes}) {
+export default function LoginForm({fetchNotes, user}) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
@@ -15,6 +15,7 @@ export default function LoginForm({fetchNotes}) {
     e.preventDefault() // Prevent default form action
     if (!email.trim() || !password.trim()) {
       toast.error("Email and Password cannot be empty.")
+      console.log(user)
       return  
     }
 
@@ -29,6 +30,10 @@ export default function LoginForm({fetchNotes}) {
         toast.success("Successfully Login!")
         if (res.data.role !== "admin") return navigate('/home')
         navigate('/admin')
+      })
+      .catch(err => {
+        console.log(err)
+        toast.error("Invalid Credential.")
       })
   }
 
