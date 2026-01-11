@@ -28,12 +28,12 @@ export default function UserList({ user, fetchUser}) {
   return(
     <div className=" p-5">
       <h1 className="text-green-600 text-lg font-bold">User List</h1>
-      <div className="mt-5 grid grid-cols-4 gap-3 text-white">
+      <div className="mt-5 grid grid-cols-4 gap-3 text-white max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-3">
         {
           user.length === 0
           ? <div><h1 className="text-white font-bold text-xl">No User</h1></div>
           : user.map((User) => {
-            return <div key={User._id} className="bg-[#141212] p-4 rounded-md">
+            return <div key={User._id} className="bg-[#141212] p-4 rounded-md w-full">
               <h1 className="font-bold mb-2 text-lg">{User.email}</h1>
               <p className="text-sm">{User.role}</p>
               <div className="flex items-center justify-end gap-3 mt-4">

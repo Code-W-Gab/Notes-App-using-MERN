@@ -36,8 +36,8 @@ export default function RegisterForm() {
   }
 
   return(
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="bg-white p-10 rounded-md w-90">
+    <div className="flex items-center justify-center min-h-screen px-10">
+      <div className="bg-white p-10 rounded-md w-90 max-sm:px-7">
         <h1 className="text-center text-2xl font-bold mb-4">Sign Up</h1>
         <div className="flex flex-col gap-1 mb-2">
           <label htmlFor="Email">Email</label>
@@ -64,7 +64,7 @@ export default function RegisterForm() {
         <button className="bg-blue-600 text-white py-1.5 w-full rounded-md hover:bg-blue-500" onClick={handleSignUp}>Sign In</button>
         <Divider/>
         <GoogleBtn/>
-        <div className="flex gap-2 justify-center mt-2 text-sm">
+        <div className="flex gap-2 justify-center mt-2 text-sm max-sm:flex-col text-center">
           <p>Already have an account?</p>
           <Link to={'/'}>
             <span className="text-blue-500 underline">Sign in?</span>

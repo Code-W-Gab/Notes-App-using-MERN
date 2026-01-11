@@ -16,8 +16,8 @@ export default function LogoutBtn() {
       <button
         onClick={handleLogout}
         className="flex items-center gap-2 bg-red-500 p-2 rounded-3xl text-white">
-        <LogOut size={20}/>
-        <span>Logout</span>
+        <LogOut size={20} className="max-sm:size-5"/>
+        <span className="max-sm:text-sm">Logout</span>
       </button>
     </>
   )

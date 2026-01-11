@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { Login } from "../../services/authService"
 import toast from "react-hot-toast"
 import GoogleBtn from "./GoogleBtn"
-import ForgotPass from "./ForgotPass"
+import ForgotPassBtn from "./ForgotPassBtn"
 import Divider from "./Divider"
 
 export default function LoginForm({fetchNotes, user}) {
@@ -38,7 +38,7 @@ export default function LoginForm({fetchNotes, user}) {
   }
 
   return(
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center min-h-screen px-10">
       <div className="bg-white p-10 rounded-md w-90">
         <h1 className="text-center text-2xl font-bold mb-4">Login</h1>
         <div className="flex flex-col gap-1 mb-2">
@@ -64,10 +64,10 @@ export default function LoginForm({fetchNotes, user}) {
           />
         </div>
         <button className="bg-blue-600 text-white py-1.5 w-full rounded-md hover:bg-blue-500" onClick={handleLogin}>Sign In</button>
-        <ForgotPass/>
+        <ForgotPassBtn/>
         <Divider/>
         <GoogleBtn/>
-        <div className="flex gap-2 justify-center mt-2 text-sm">
+        <div className="flex gap-2 justify-center mt-2 text-sm max-sm:flex-col text-center">
           <p>Don't have an account?</p>
           <Link to={'/register'}>
             <span className="text-blue-500 underline">Sign Up?</span>

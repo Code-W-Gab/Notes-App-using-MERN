@@ -6,6 +6,7 @@ import NoteDetailPage from "./pages/user/NoteDetailPage";
 import SignUpPage from "./pages/auth/SignUpPage";
 import SignInPage from "./pages/auth/SignInPage";
 import AuthCallbackPage from "./pages/auth/AuthCallbackPage";
+import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage";
 // Admin Page
 import AdminPage from "./pages/admin/AdminPage";
 import AdminDetailPage from "./pages/admin/AdminDetailPage";
@@ -16,6 +17,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom"
 import { getNotes } from "./services/noteService";
 import { User } from "./services/adminService" 
+
 
 
 function App() {
@@ -74,6 +76,7 @@ function App() {
           <AdminNotePage/>
         </PrivateRoute>
       }/>
+      <Route path="/forgot-pass" element={<ForgotPasswordPage/>}/>
       <Route path="/auth/callback" element={<AuthCallbackPage fetchNotes={fetchNotes} />} />
       <Route path="/register" element={<SignUpPage/>}/>
       <Route path="/" element={<SignInPage fetchNotes={fetchNotes}/>}/>

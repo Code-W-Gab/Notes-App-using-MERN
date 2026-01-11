@@ -20,7 +20,7 @@ export default function UserNoteList({ notes, loading, userId }) {
         <span>Back to admin</span>
       </nav>
       <h1 className="text-green-600 text-lg font-bold">Note List (User ID: {userId})</h1>
-      <div className="mt-5 grid grid-cols-3 gap-3">
+      <div className="mt-5 grid grid-cols-3 gap-3 max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-3">
         {notes.length === 0 ? (
           <p className="text-white">No notes found for this user.</p>
         ) : (

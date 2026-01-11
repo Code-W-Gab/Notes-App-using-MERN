@@ -21,7 +21,7 @@ export default function List({ notes, fetchNotes }) {
   }
 
   return(
-    <div className="m-10 grid grid-cols-4 gap-3 text-white">
+    <div className="m-10 grid grid-cols-4 gap-3 text-white max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-3 ">
       {
         notes.length === 0
         ? <div><h1 className="text-white font-bold text-xl">No Notes</h1></div>
